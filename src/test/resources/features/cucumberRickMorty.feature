@@ -1,4 +1,5 @@
-#language: ru
+# encoding: utf-8
+# language: ru
 
 Функция: Тестирование edujira.ifellow.ru
 

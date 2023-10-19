@@ -3,7 +3,6 @@ package api;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Assertions;
 
 import static configuration.Configuration.getProperty;
 import static io.restassured.RestAssured.given;
@@ -13,7 +12,7 @@ public class ApiTemplate {
 
     public static Response characterModule(String link, String param) {
         return given()
-                .baseUri("https://rickandmortyapi.com/api")
+                .baseUri(getProperty("hostRickMorty"))
                 .when()
                 .filter(new AllureRestAssured())
                 .get(link + param)
