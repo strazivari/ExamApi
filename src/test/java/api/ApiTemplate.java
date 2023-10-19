@@ -13,7 +13,7 @@ public class ApiTemplate {
 
     public static Response characterModule(String link, String param) {
         return given()
-                .baseUri(getProperty("hostRickMorty"))
+                .baseUri("https://rickandmortyapi.com/api")
                 .when()
                 .filter(new AllureRestAssured())
                 .get(link + param)
@@ -49,21 +49,5 @@ public class ApiTemplate {
 
     public static String optionParseObj(Response request, String option, String optionParam) {
         return new JSONObject(request.getBody().asString()).getJSONObject(option).get(optionParam).toString();
-    }
-
-    public static void testParams(String key, String actual, String message) {
-        try {
-            Assertions.assertEquals(key, actual, message);
-        } catch (AssertionError e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static void testParams(String key, String message) {
-        try {
-            Assertions.assertNotNull(key, message);
-        } catch (AssertionError e) {
-            System.out.println(e.getMessage());
-        }
     }
 }

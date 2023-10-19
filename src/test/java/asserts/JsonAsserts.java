@@ -4,7 +4,7 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Step;
 
-import static api.ApiTemplate.testParams;
+import static asserts.AssertTemplate.testParams;
 import static api.PotatoApi.*;
 
 public class JsonAsserts {

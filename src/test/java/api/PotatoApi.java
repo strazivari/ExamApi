@@ -4,6 +4,7 @@ import static api.ApiTemplate.*;
 import static configuration.Configuration.getProperty;
 import static io.restassured.RestAssured.given;
 
+import io.cucumber.java.ru.Дано;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -17,6 +18,7 @@ public class PotatoApi {
     public static JSONObject sendJson;
 
     @Step("JSON запрос PUT name, job. Получение объекта JSON")
+    @Дано("JSON запрос PUT name, job. Получение объекта JSON")
     public static JSONObject getJSONFromFile() throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get("src/test/resources/potato.json"));
         JSONObject json = new JSONObject(encoded, "UTF-8");

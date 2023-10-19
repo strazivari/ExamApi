@@ -1,5 +1,8 @@
 package api;
 
+import io.cucumber.java.ru.Дано;
+import io.cucumber.java.ru.Затем;
+import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +23,7 @@ public class RickMortyApi {
     public static String lastCharName;
 
     @Step("Получение информации о персонаже")
+    @Дано("Получение информации о персонаже с id {string}")
     public static void rickMorty(String id) {
         Response gettingCharLoc = characterModule(characterLink, id);
         charLoc = optionParseObj(gettingCharLoc, "location", "name");
@@ -29,6 +33,7 @@ public class RickMortyApi {
     }
 
     @Step("Выбор последнего эпизода, где появлялся персонаж")
+    @Тогда("Выбор последнего эпизода, где появлялся персонаж")
     public static void gettingLastEpisode() {
         Response gettingLastEpisode = characterModule(characterLink, charId);
 
@@ -37,6 +42,7 @@ public class RickMortyApi {
     }
 
     @Step("Получение id последнего персонажа последней локации последнего эпизода, где появлялся персонаж")
+    @Затем("Получение id последнего персонажа последней локации последнего эпизода, где появлялся персонаж")
     public static void gettingCharLastEpisode() {
         Response gettingCharLastEpisode = characterModule(episodeLink, lastEpisode);
         int character = optionParseArray(gettingCharLastEpisode, "characters");
@@ -44,6 +50,7 @@ public class RickMortyApi {
     }
 
     @Step("Получение информации о полученном персонаже из последнего эпизода, где появлялся персонаж из первого шага")
+    @Затем("Получение информации о полученном персонаже из последнего эпизода, где появлялся персонаж из первого шага")
     public static void gettingCharInfoLastEpisode() {
         Response gettingCharInfoLastEpisode = characterModule(characterLink, lastChar);
         lastCharName = optionParse(gettingCharInfoLastEpisode, "name");
