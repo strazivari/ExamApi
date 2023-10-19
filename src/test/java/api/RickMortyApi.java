@@ -51,13 +51,5 @@ public class RickMortyApi {
         lastCharLocation = optionParseObj(gettingCharInfoLastEpisode, "location", "name");
     }
 
-    @Step("Проверка локаций первого и второго персонажей")
-    public static void speciesCheck(String charSpecies, String lastCharSpecies) {
-        testParams(charSpecies, lastCharSpecies, "Вид не совпадает");
-    }
 
-    @Step("Проверка вида первого и второго персонажей")
-    public static void locCheck(String charLoc, String lastCharLocation) {
-        testParams(charLoc, lastCharLocation, "Локации не совпадают");
-    }
 }

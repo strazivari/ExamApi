@@ -5,19 +5,32 @@ import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 
+import static configuration.Configuration.getProperty;
 import static io.restassured.RestAssured.given;
 
 
 public class ApiTemplate {
-    public static String rickMortyApiUrl = "https://rickandmortyapi.com/api";
 
     public static Response characterModule(String link, String param) {
         return given()
-                .baseUri(rickMortyApiUrl)
+                .baseUri(getProperty("hostRickMorty"))
                 .when()
                 .filter(new AllureRestAssured())
                 .get(link + param)
                 .then()
+                .extract()
+                .response();
+    }
+    public static Response postRequest(JSONObject json, String baseUri, String UriJsonPostUser) {
+        return given()
+                .baseUri(baseUri)
+                .contentType("application/json;charset=UTF-8")
+                .when()
+                .body(json.toString())
+                .filter(new AllureRestAssured())
+                .post(UriJsonPostUser)
+                .then()
+                .statusCode(201)
                 .extract()
                 .response();
     }
@@ -47,14 +60,6 @@ public class ApiTemplate {
     }
 
     public static void testParams(String key, String message) {
-        try {
-            Assertions.assertEquals(key, message);
-        } catch (AssertionError e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static void testParams2(String key, String message) {
         try {
             Assertions.assertNotNull(key, message);
         } catch (AssertionError e) {
