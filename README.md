@@ -1,27 +1,33 @@
-# Проект по автоматизации тестирования API для веб-приложения [Reqres](https://reqres.in/)
+# Проект по автоматизации тестирования API для веб-приложения [Reqres](https://reqres.in/), [RickMortyAPI](https://rickandmortyapi.com/api)
 
-## <img width="4%" title="Functional" src="images/function.png"> Покрытый функционал
+## Покрытый функционал
 
 > Разработаны автотесты на <code>API</code>.
+> 
+> Разработаны автотесты при использовании <code>JSON</code>.
 
-### API
+### RickMortyApi
 
-- [x] Запрос <code>POST</code>
-- [x] Отображение <code>statusCode</code> и <code>body</code> в ответе запроса
+- [x] Составление <code>Response</code> запросов для работы с ветками объектов
 
-## <img width="4%" title="Technologies" src="images/technologies.png"> Технологический стек
+### jsonPotato
 
-<p align="center">
-<img width="6%" title="IntelliJ IDEA" src="images/logo/intellij.svg">
-<img width="5%" title="Java" src="images/logo/java.svg">
-<img width="6%" title="Gradle" src="images/logo/maven.svg">
-<img width="5%" title="JUnit5" src="images/logo/cucumber.svg">
-<img width="5.5%" title="GitHub" src="images/logo/github.svg">
-<img width="6%" title="Rest Assured" src="images/logo/rest.svg">
-<img width="6%" title="Rest Assured" src="images/logo/allure.svg">
-</p>
+- [x] Запрос <code>PUT</code>
+- [x] Проверка <code>name</code>, <code>job</code>, <code>id</code>, <code>createdAt</code>
 
-> В данном проекте автотесты написаны на <code>Java</code> с использованием библиотеки <code>REST Assured</code> для API-тестов.
+## Технологический стек
+
+- [x] IntelliJ IDEA
+- [x] Java
+- [x] Maven
+- [x] Cucumber
+- [x] GitHub
+- [x] Rest Assured
+- [x] Allure Result
+
+> В данном проекте автотесты написаны на <code>Java</code> с использованием библиотеки <code>REST Assured</code> для API-тестов.>
+>
+> Тест jsonPotato использует <code>JSON</code>.
 >
 > Для автоматизированной сборки проекта используется <code>Maven</code>.
 >
@@ -29,15 +35,15 @@
 >
 > Отчет генерируется с помощью библиотеки <code>Allure</code>.
 
-## <img width="4%" title="Terminal" src="images/cmd.png"> Запуск тестов из терминала
+## Запуск тестов из терминала
 
-### <img width="4%" src="images/play.png"> Локальный запуск тестов
+### Локальный запуск тестов
 
 ```
 mvn clean test - запуск всех тестов в проекте
 ```
 ```
-mvn clean test -Dgrops="@jsonPotato" - запуск теста jsonPotato
+mvn clean test -Dcucumber.filter.tags="@jsonPotato" - запуск теста jsonPotato
 
-mvn clean test -Dgrops="@RickMorty" - запуск теста RickMorty
+mvn clean test -Dcucumber.filter.tags="@RickMorty" - запуск теста RickMorty
 ```
